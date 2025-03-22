@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes zoom {
+    0% {
+        background-size: 150%;
+        /* Начальный масштаб фона */
+    }
+
+    100% {
+        background-size: 200%;
+        /* Конечный масштаб фона */
+    }
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+header {
+    background-image: url('https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+    animation: moveBackground 35s linear infinite, zoom 75s linear infinite;
+    /* Анимация перемещения и приближения */
+}
+
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 640px) {
+    header {
+        animation: moveBackground 200s linear infinite;
+    }
+}
+
+.iss-orbit-effect {
+    animation: issFlyby 90s infinite alternate ease-in-out;
+    transform-origin: center;
+    height: 160% !important;
+    width: 160% !important;
+    object-position: center;
+    object-fit: cover;
+}
+
+.space-gradient-text {
+    background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.space-subtitle {
+    background: linear-gradient(to right, #43c6ac, #f8ffae);
+    -webkit-background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.nav-link {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #43c6ac, #f8ffae);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.social-icon {
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
