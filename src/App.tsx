@@ -205,9 +205,9 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 px-4 md:px-8 bg-white">
+      <section className="py-16 px-4 md:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-2 mb- 12">
+          <div className="flex items-center gap-2 mb-8">
             <Code size={24} />
             <h2 className="text-3xl font-bold">Skills</h2>
           </div>
