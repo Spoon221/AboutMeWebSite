@@ -1,7 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Gamepad2, MousePointer, ArrowUp, ArrowDown } from 'lucide-react';
+import { translations } from './translation';
 
-const PingPongGame: React.FC = () => {
+type Language = 'en' | 'ru'; // Add other languages as needed
+
+const PingPongGame: React.FC<{ language: Language }> = ({ language }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [gameRunning, setGameRunning] = useState(false);
   const [playerScore, setPlayerScore] = useState(0);
@@ -236,7 +239,7 @@ const PingPongGame: React.FC = () => {
 
   const gameLoop = () => {
     if (!gameRunning) {
-      animationFrameIdRef.current = null; // Остановите цикл, если игра не запущена
+      animationFrameIdRef.current = null;
       return;
     }
 
@@ -281,26 +284,33 @@ const PingPongGame: React.FC = () => {
 
   const touchUpIntervalRef = useRef<number | null>(null);
   const touchDownIntervalRef = useRef<number | null>(null);
-  const handleTouchUp = () => { if (!gameRunning || !canvasRef.current) return;
+  const handleTouchUp = () => {
+    if (!gameRunning || !canvasRef.current) return;
     const playerPaddle = playerPaddleRef.current;
-    
+
     playerPaddle.y -= playerPaddle.speed * 4;
     if (playerPaddle.y < 0) {
       playerPaddle.y = 0;
     }
-    };
+  };
+
   const startTouchUp = () => {
     if (touchUpIntervalRef.current) return;
     handleTouchUp();
     touchUpIntervalRef.current = window.setInterval(handleTouchUp, 50);
   };
-  const handleTouchDown = () => { if (!gameRunning || !canvasRef.current) return; const canvas = canvasRef.current; const playerPaddle = playerPaddleRef.current;
+
+  const handleTouchDown = () => {
+    if (!gameRunning || !canvasRef.current) return;
+    const canvas = canvasRef.current;
+    const playerPaddle = playerPaddleRef.current;
 
     playerPaddle.y += playerPaddle.speed * 4;
     if (playerPaddle.y + playerPaddle.height > canvas.height) {
       playerPaddle.y = canvas.height - playerPaddle.height;
     }
-    };
+  };
+
   const startTouchDown = () => {
     if (touchDownIntervalRef.current) return;
     handleTouchDown();
@@ -387,42 +397,43 @@ const PingPongGame: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-2 mb-8">
           <Gamepad2 className="w-6 h-6" />
-          <h2 className="text-3xl font-bold">Let's Play Ping Pong</h2>
+          <h2 className="text-3xl font-bold">{translations["pingpong_title"][language]}</h2>
         </div>
 
         <div className="mb-4 text-gray-700">
-          <p>Challenge the AI to a game of ping pong! 
-            {isMobile 
-              ? " Use touch control or the buttons below to move your paddle." 
-              : " Use your mouse or arrow keys to control the paddle."}
+          <p className="text-center text-lg md:text-base">
+            {translations["pingpong_challenge"][language]}
+            {isMobile
+              ? translations["pingpong_touch_control"][language]
+              : translations["pingpong_mouse_control"][language]}
           </p>
         </div>
 
         <div className="relative">
           <div className="relative bg-black rounded-lg overflow-hidden aspect-video max-h-[600px]">
-            <canvas 
-              ref={canvasRef} 
-              id="pingpong" 
+            <canvas
+              ref={canvasRef}
+              id="pingpong"
               className="w-full h-full"
               onMouseMove={handleMouseMove}
               onTouchMove={handleTouchMove}
             />
 
             {!gameRunning && !gameOver && (
-              <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center text-white">
-                <h3 className="text-3xl font-bold mb-6">Ping Pong Challenge</h3>
-                <p className="mb-8 text-center max-w-md">
-                  {isMobile 
-                    ? `Control your paddle with touch or the buttons below.` 
-                    : `Control your paddle with your mouse or keyboard arrow keys.`}
-                  <br/>
-                  First to {winningScore} points wins!
+              <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center text-white p-4">
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-center">{translations["pingpong_challenge"][language]}</h3>
+                <p className="mb-6 text-center max-w-md text-sm md:text-base">
+                  {isMobile
+                    ? translations["pingpong_touch_instruction"][language]
+                    : translations["pingpong_mouse_instruction"][language]}
+                  <br />
+                  {translations["pingpong_first_to"][language]} {winningScore} {translations["pingpong_points"][language]}!
                 </p>
-                <button 
+                <button
                   onClick={startGame}
-                  className="px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition-colors"
+                  className="px-4 py-2 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition-colors"
                 >
-                  Start Game
+                  {translations["start_game"][language]}
                 </button>
               </div>
             )}
@@ -430,14 +441,14 @@ const PingPongGame: React.FC = () => {
             {gameOver && (
               <div className="absolute inset-0 bg-black bg-opacity-80 flex flex-col items-center justify-center text-white">
                 <h3 className="text-3xl font-bold mb-2">
-                  {winner === 'player' ? 'You Win!' : 'AI Wins!'}
+                  {winner === 'player' ? translations["you_win"][language] : translations["ai_wins"][language]}
                 </h3>
-                <p className="text-xl mb-8">You: {playerScore} - AI: {aiScore}</p>
-                <button 
+                <p className="text-xl mb-8">{translations["score"][language]}: {playerScore} - {aiScore}</p>
+                <button
                   onClick={handleReset}
                   className="px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-gray-200 transition-colors"
                 >
-                  Play Again
+                  {translations["play_again"][language]}
                 </button>
               </div>
             )}
@@ -455,7 +466,7 @@ const PingPongGame: React.FC = () => {
             {isMobile ? (
               <div className="w-full flex justify-center mt-2">
                 <div className="flex gap-3">
-                  <button 
+                  <button
                     onTouchStart={startTouchUp}
                     onMouseDown={startTouchUp}
                     onTouchEnd={stopTouchMovement}
@@ -466,7 +477,7 @@ const PingPongGame: React.FC = () => {
                   >
                     <ArrowUp className="w-8 h-8" />
                   </button>
-                  <button 
+                  <button
                     onTouchStart={startTouchDown}
                     onMouseDown={startTouchDown}
                     onTouchEnd={stopTouchMovement}
@@ -481,29 +492,28 @@ const PingPongGame: React.FC = () => {
               </div>
             ) : (
               <div className="text-sm text-gray-600">
-                <span><MousePointer className="w-4 h-4 inline" /> or </span>
+                <span><MousePointer className="w-4 h-4 inline" /> {translations["or"][language]} </span>
                 <span>
                   <ArrowUp className="w-4 h-4 inline" />
-                  <ArrowDown className="w-4 h-4 inline" /> to move
+                  <ArrowDown className="w-4 h-4 inline" /> {translations["to_move"][language]}
                 </span>
               </div>
             )}
           </div>
 
-          {/* Кнопка для выключения игры, показывается только если игра запущена */}
           {gameRunning && (
             <div className="mt-4 flex justify-center">
-              <button 
+              <button
                 onClick={stopGame}
                 className="px-6 py-3 bg-red-600 text-white rounded-lg font-medium hover:bg-red-500 transition-colors"
               >
-                Turn off the game
+                {translations["turn_off_game"][language]}
               </button>
             </div>
           )}
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 

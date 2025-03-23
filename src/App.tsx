@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, ExternalLink, User, Briefcase, GraduationCap, Code } from 'lucide-react';
 import PingPongGame from './PingPongGame';
+import { translations } from './translation';
+import './index.css';
+
+// Импортируем изображения
 import iconReactGame from './react.jpg';
 import iconThreeJS from './ThreeJS.jpg';
 import iconUnityIf from './unityIf.png';
@@ -9,6 +13,18 @@ import iconUnityWenture from './TheWenture.jpg';
 function App() {
   // Состояние для хранения текущего индекса изображения.
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // Состояние для хранения текущего языка (по умолчанию английский)
+  const [language, setLanguage] = useState<'en' | 'ru'>('en');
+
+  // Функция для переключения языка
+  const toggleLanguage = () => {
+    setLanguage(prevLang => (prevLang === 'en' ? 'ru' : 'en'));
+  };
+
+  // Функция для получения текста по ключу в текущем языке
+  const t = (key: string) => {
+    return translations[key]?.[language] || key;
+  };
 
   const projectData = [
     {
@@ -68,15 +84,24 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Language Switch */}
+      <button
+        className="language-switcher"
+        onClick={toggleLanguage}
+        aria-label={`Switch to ${language === 'en' ? 'Russian' : 'English'}`}
+      >
+        {t('change_language')}
+      </button>
+
       {/* Hero Section */}
       <header className="relative h-screen flex items-center justify-center bg-black text-white overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-40 overflow-hidden"></div>
         <div className="relative z-10 text-center px-6 max-w-4xl hero-content" style={parallaxStyle}>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 space-gradient-text pt-2 pb-3">
-            Evgeniy Simakov
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 space-gradient-text pt-2 pb-3">
+            {t('name')}
           </h1>
           <p className="text-2xl md:text-3xl mb-8 space-subtitle">
-            Frontend Developer
+            {t('role')}
           </p>
           <div className="flex flex-col md:flex-row justify-center items-center gap-6">
             <div className="flex items-center gap-6">
@@ -96,7 +121,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Projects
+              {t('projects')}
             </a>
           </div>
         </div>
@@ -112,10 +137,10 @@ function App() {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-2 mb-8">
             <User className="text-black" size={24} />
-            <h2 className="text-3xl font-bold">About me</h2>
+            <h2 className="text-3xl font-bold">{t('about_me')}</h2>
           </div>
           <p className="text-gray-700 text-lg leading-relaxed mb-12">
-            I am a frontend developer specializing in web applications using Three.js and React. Additionally, I develop games using Unity, and I have a diverse technology stack.
+            {t('about_text')}
           </p>
 
           {/* Image Carousel */}
@@ -185,20 +210,26 @@ function App() {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-2 mb-12">
             <Briefcase size={24} />
-            <h2 className="text-3xl font-bold">Work experience</h2>
+            <h2 className="text-3xl font-bold">{t('work_experience')}</h2>
           </div>
           <div className="space-y-12">
             <div className="border-l-2 border-white pl-8 relative">
               <div className="absolute w-4 h-4 bg-white rounded-full -left-[9px] top-0"></div>
-              <h3 className="text-xl font-bold mb-2">Full stack Developer</h3>
-              <p className="text-gray-400 mb-2">Learn&Grow • Remote •  2024 - Current Period</p>
-              <p className="text-gray-300">Development of a web application using Go and integration with a Telegram bot.</p>
+              <h3 className="text-xl font-bold mb-2">{t('backend_dev')}</h3>
+              <p className="text-gray-400 mb-2">{t('backend_period')}</p>
+              <p className="text-gray-300">{t('backend_description')}</p>
             </div>
             <div className="border-l-2 border-white pl-8 relative">
               <div className="absolute w-4 h-4 bg-white rounded-full -left-[9px] top-0"></div>
-              <h3 className="text-xl font-bold mb-2">Frontend Developer</h3>
-              <p className="text-gray-400 mb-2">Dotimo • Ekaterinburg • 2023 - 2024</p>
-              <p className="text-gray-300">Designing user interfaces and enhancing interactivity, as well as providing support for existing projects.</p>
+              <h3 className="text-xl font-bold mb-2">{t('frontend_dev')}</h3>
+              <p className="text-gray-400 mb-2">{t('frontend_period')}</p>
+              <p className="text-gray-300">{t('frontend_description')}</p>
+            </div>
+            <div className="border-l-2 border-white pl-8 relative">
+              <div className="absolute w-4 h-4 bg-white rounded-full -left-[9px] top-0"></div>
+              <h3 className="text-xl font-bold mb-2">{t('fullstack_dev')}</h3>
+              <p className="text-gray-400 mb-2">{t('fullstack_period')}</p>
+              <p className="text-gray-300">{t('fullstack_description')}</p>
             </div>
           </div>
         </div>
@@ -209,7 +240,7 @@ function App() {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-2 mb-8">
             <Code size={24} />
-            <h2 className="text-3xl font-bold">Skills</h2>
+            <h2 className="text-3xl font-bold">{t('skills')}</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {['React', 'Vue', 'TypeScript', 'JavaScript', 'Three JS', 'HTML/CSS', 'Blender', 'Drei', 'Python', 'MySQL', 'C#', 'Unity', 'C++', 'Vite', 'Git'].map((skill) => (
@@ -226,19 +257,19 @@ function App() {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-2 mb-12">
             <GraduationCap size={24} />
-            <h2 className="text-3xl font-bold">Education</h2>
+            <h2 className="text-3xl font-bold">{t('education')}</h2>
           </div>
           <div className="border-l-2 border-white pl-8 relative">
             <div className="absolute w-4 h-4 bg-white rounded-full -left-[9px] top-0"></div>
-            <h3 className="text-xl font-bold mb-2">Software Engineer</h3>
-            <p className="text-gray-400 mb-2">Institute of Radio Engineering at Ural Federal University • 2021 - 2025</p>
-            <p className="text-gray-300">Bachelor</p>
+            <h3 className="text-xl font-bold mb-2">{t('engineer')}</h3>
+            <p className="text-gray-400 mb-2">{t('university')}</p>
+            <p className="text-gray-300">{t('degree')}</p>
           </div>
         </div>
       </section>
 
       {/* Ping Pong Game Section */}
-      <PingPongGame />
+      <PingPongGame language={language} />
 
       {/* Footer */}
       <footer className="py-8 px-4 bg-white border-t border-gray-200">
@@ -247,11 +278,11 @@ function App() {
             <a href="https://github.com/Spoon221" className="text-black hover:text-gray-600 transition-colors"><Github size={24} /></a>
             <a href="https://www.linkedin.com/in/евгений-симаков-7680b0345/" className="text-black hover:text-gray-600 transition-colors"><Linkedin size={24} /></a>
             <a href="mailto:simakov.jenja@gmail.com" className="text-black hover:text-gray-600 transition-colors"><Mail size={24} /></a>
-            <a href="https://simakovevgeny.vercel.app/" className="text-black hover:text-gray-600 transition-colors">Project</a>
+            <a href="https://simakovevgeny.vercel.app/" className="text-black hover:text-gray-600 transition-colors">{t('projects')}</a>
           </div>
-          <p className="text-gray-600">© 2025 Evgeniy Simakov</p>
+          <p className="text-gray-600">{t('copyright')}</p>
         </div>
-      </footer>
+      </ footer>
     </div>
   );
 }
