@@ -9,6 +9,7 @@ import iconReactGame from './react.jpg';
 import iconThreeJS from './ThreeJS.jpg';
 import iconUnityIf from './unityIf.png';
 import iconUnityWenture from './TheWenture.jpg';
+import iconpyLearning from './pylearning.png';
 
 function App() {
   // Состояние для хранения текущего индекса изображения.
@@ -27,6 +28,11 @@ function App() {
   };
 
   const projectData = [
+    {
+      image: iconpyLearning,
+      link: 'https://learning-nine-cyan.vercel.app/',
+      title: 'React Project'
+    },
     {
       image: iconReactGame,
       link: 'https://react4-spoon221s-projects.vercel.app/',
