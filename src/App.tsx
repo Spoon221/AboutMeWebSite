@@ -237,6 +237,12 @@ function App() {
               <p className="text-gray-400 mb-2">{t('fullstack_period')}</p>
               <p className="text-gray-300">{t('fullstack_description')}</p>
             </div>
+            <div className="border-l-2 border-white pl-8 relative">
+              <div className="absolute w-4 h-4 bg-white rounded-full -left-[9px] top-0"></div>
+              <h3 className="text-xl font-bold mb-2">{t('frontend_it_element_dev')}</h3>
+              <p className="text-gray-400 mb-2">{t('frontend_it_element_period')}</p>
+              <p className="text-gray-300">{t('frontend_it_element_description')}</p>
+            </div>
           </div>
         </div>
       </section>

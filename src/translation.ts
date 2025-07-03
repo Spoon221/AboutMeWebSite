@@ -77,6 +77,18 @@ interface Translation {
       en: "Designing user interfaces and enhancing interactivity, as well as providing support for existing projects.",
       ru: "Проектирование пользовательских интерфейсов и улучшение интерактивности, а также поддержка существующих проектов."
     },
+    "frontend_it_element_dev": {
+      en: "Frontend Developer",
+      ru: "Фронтенд Разработчик"
+    },
+    "frontend_it_element_period": {
+      en: "IT Element 29 • Ekaterinburg • 2025 - Current Period",
+      ru: "ИТ Элемент 29 • Екатеринбург • 2025 - Настоящее время"
+    },
+    "frontend_it_element_description": {
+      en: "Programming in Next.js for an electronic booking system for Hyatt hotels.",
+      ru: "Программирование на Next.js для системы электронного бронирования для отелей Hyatt."
+    },
     
     // Секция навыков
     "skills": {
