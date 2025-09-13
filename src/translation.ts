@@ -12,14 +12,110 @@ interface Translation {
       ru: "Евгений Симаков"
     },
     "role": {
-      en: "Frontend Developer",
-      ru: "Фронтенд Разработчик"
+      en: "Fullstack Developer",
+      ru: "Фуллстек Разработчик"
     },
     
     // Ссылки
     "projects": {
       en: "Projects",
       ru: "Проекты"
+    },
+    "download_resume": {
+      en: "Download Resume",
+      ru: "Скачать резюме"
+    },
+    "interactive_features": {
+      en: "Interactive Features",
+      ru: "Интерактивные возможности"
+    },
+    "interactive_features_description": {
+      en: "Explore my skills and achievements through interactive elements",
+      ru: "Изучите мои навыки и достижения через интерактивные элементы"
+    },
+    "skill_progress": {
+      en: "Skill Progress",
+      ru: "Прогресс навыков"
+    },
+    "skill_progress_description": {
+      en: "Visual representation of my expertise levels",
+      ru: "Визуальное представление уровней моей экспертизы"
+    },
+    "tech_stack": {
+      en: "Tech Stack",
+      ru: "Технологический стек"
+    },
+    "tech_stack_description": {
+      en: "Technologies I work with daily",
+      ru: "Технологии, с которыми я работаю ежедневно"
+    },
+    "achievements": {
+      en: "Key Achievements",
+      ru: "Ключевые достижения"
+    },
+    "achievements_description": {
+      en: "Highlights of my professional journey",
+      ru: "Основные моменты моего профессионального пути"
+    },
+    "achievement_1": {
+      en: "Full-stack development with Go and React",
+      ru: "Фулстек-разработка на Go и React"
+    },
+    "achievement_2": {
+      en: "3D web applications with Three.js",
+      ru: "3D веб-приложения на Three.js"
+    },
+    "achievement_3": {
+      en: "Game development with Unity and C#",
+      ru: "Разработка игр на Unity и C#"
+    },
+    "skill_tree": {
+      en: "Skill Tree",
+      ru: "Дерево навыков"
+    },
+    "project_showcase": {
+      en: "Project Showcase",
+      ru: "Портфолио проектов"
+    },
+    "project_react_description": {
+      en: "Modern React portfolio with TypeScript and Tailwind CSS. Features responsive design, smooth animations, and interactive components.",
+      ru: "Современное React-портфолио с TypeScript и Tailwind CSS. Включает адаптивный дизайн, плавные анимации и интерактивные компоненты."
+    },
+    "project_threejs_description": {
+      en: "3D interactive portfolio built with Three.js. Features 3D models, animations, and immersive user experience.",
+      ru: "3D интерактивное портфолио на Three.js. Включает 3D модели, анимации и иммерсивный пользовательский опыт."
+    },
+    "project_unity_description": {
+      en: "Game development project in Unity with C#. Features game mechanics, physics, and interactive gameplay elements.",
+      ru: "Проект разработки игры в Unity на C#. Включает игровую механику, физику и интерактивные элементы геймплея."
+    },
+    "interactive_timeline": {
+      en: "Interactive Timeline",
+      ru: "Интерактивная временная шкала"
+    },
+    "timeline_2021_title": {
+      en: "Game Development",
+      ru: "Разработка игр"
+    },
+    "timeline_2021_description": {
+      en: "Created games on Unity with client-server interaction",
+      ru: "Создавал игры на Unity с клиент-серверным взаимодействием"
+    },
+    "timeline_2022_title": {
+      en: "Frontend Development",
+      ru: "Фронтенд разработка"
+    },
+    "timeline_2022_description": {
+      en: "Moved to frontend development with React and Next.js",
+      ru: "Ушел во фронтенд на React и Next.js"
+    },
+    "timeline_2023_title": {
+      en: "Backend Development",
+      ru: "Бэкенд разработка"
+    },
+    "timeline_2023_description": {
+      en: "Moved to backend development, creating AI bots and websites with Python and Go",
+      ru: "Ушел в backend, создавая AI боты и сайты на Python, Go"
     },
     "explore": {
       en: "Explore",
@@ -31,15 +127,35 @@ interface Translation {
       en: "About me",
       ru: "Обо мне"
     },
-    "about_text": {
-      en: "I am a frontend developer specializing in web applications using Three.js and React. Additionally, I develop games using Unity, and I have a diverse technology stack.",
-      ru: "Я фронтенд-разработчик, специализирующийся на веб-приложениях с использованием Three.js и React. Также я разрабатываю игры на Unity и владею разнообразным стеком технологий."
-    },
+         "about_text": {
+       en: "I am a fullstack developer specializing in web applications using Three.js, React, and Next.js. I work with electronic booking systems for Hyatt hotel networks on Next.js and have experience with backend development using Golang, FastAPI, and Django. Additionally, I develop games using Unity and have a diverse technology stack.",
+       ru: "Я фуллстек-разработчик, специализирующийся на веб-приложениях с использованием Three.js, React и Next.js. Работаю с системами электронного бронирования для сетей отелей Hyatt на Next.js и имею опыт бэкенд-разработки на Golang, FastAPI и Django. Также я разрабатываю игры на Unity и владею разнообразным стеком технологий."
+     },
+     "interactive_3d": {
+       en: "Interactive 3D Experience",
+       ru: "Интерактивный 3D Опыт"
+     },
+     "interactive_3d_description": {
+       en: "Explore the power of Three.js and React Three Fiber with this interactive 3D scene. Control objects, change colors and shapes, and experience smooth animations.",
+       ru: "Исследуйте возможности Three.js и React Three Fiber с этой интерактивной 3D сценой. Управляйте объектами, меняйте цвета и формы, и наслаждайтесь плавными анимациями."
+     },
     
     // Секция опыта
     "work_experience": {
       en: "Work experience",
       ru: "Опыт работы"
+    },
+    "fullstack_dev": {
+      en: "Full stack Developer",
+      ru: "Фулстек Разработчик"
+    },
+    "fullstack_period": {
+      en: "Learn&Grow • Remote • 2021",
+      ru: "Learn&Grow • Удаленно • 2021"
+    },
+    "fullstack_description": {
+      en: "Development of a web application using Go and integration with a Telegram bot.",
+      ru: "Разработка веб-приложения с использованием Go и интеграция с Telegram-ботом."
     },
     "backend_dev": {
       en: "Backend Developer",
@@ -52,18 +168,6 @@ interface Translation {
     "backend_description": {
       en: "Developed backend logic for user authentication and action logging on the website using Ruby on Rails.",
       ru: "Разработка бэкенд-логики для авторизации пользователей и логирования действий на сайте с использованием Ruby on Rails."
-    },
-    "fullstack_dev": {
-      en: "Full stack Developer",
-      ru: "Фулстек Разработчик"
-    },
-    "fullstack_period": {
-      en: "Learn&Grow • Remote • 2024 - Current Period",
-      ru: "Learn&Grow • Удаленно • 2024 - Настоящее время"
-    },
-    "fullstack_description": {
-      en: "Development of a web application using Go and integration with a Telegram bot.",
-      ru: "Разработка веб-приложения с использованием Go и интеграция с Telegram-ботом."
     },
     "frontend_dev": {
       en: "Frontend Developer",
@@ -94,6 +198,18 @@ interface Translation {
     "skills": {
       en: "Skills",
       ru: "Навыки"
+    },
+    "frontend": {
+      en: "Frontend",
+      ru: "Фронтенд"
+    },
+    "backend": {
+      en: "Backend",
+      ru: "Бэкенд"
+    },
+    "other": {
+      en: "Other",
+      ru: "Другое"
     },
     
     // Секция образования
@@ -190,5 +306,127 @@ interface Translation {
     "to_move": {
       en: "to move",
       ru: "для движения"
+    },
+    
+    // Переводы для проектов
+    "project_nuvia_title": {
+      en: "Nuvia - 3D Portfolio",
+      ru: "Nuvia - 3D Портфолио"
+    },
+    "project_pylearning_title": {
+      en: "Python Learning Platform",
+      ru: "Платформа изучения Python"
+    },
+    "project_react_title": {
+      en: "React Portfolio",
+      ru: "React Портфолио"
+    },
+    "project_unity_wenture_title": {
+      en: "Unity Adventure Game",
+      ru: "Unity Игра-приключение"
+    },
+    "project_threejs_title": {
+      en: "Three.js Portfolio",
+      ru: "Three.js Портфолио"
+    },
+    "project_unity_if_title": {
+      en: "Unity Interactive Game",
+      ru: "Unity Интерактивная игра"
+    },
+    
+    // Переводы для навыков
+    "skill_level": {
+      en: "Level:",
+      ru: "Уровень:"
+    },
+    "skill_expert": {
+      en: "Expert",
+      ru: "Эксперт"
+    },
+    "skill_advanced": {
+      en: "Advanced",
+      ru: "Продвинутый"
+    },
+    "skill_intermediate": {
+      en: "Intermediate",
+      ru: "Средний"
+    },
+    "skill_beginner": {
+      en: "Beginner",
+      ru: "Начинающий"
+    },
+    
+    // Описания навыков на русском
+    "skill_react_desc": {
+      en: "Modern UI library for building interactive interfaces",
+      ru: "Современная библиотека для создания интерактивных интерфейсов"
+    },
+    "skill_vue_desc": {
+      en: "Progressive framework for building user interfaces",
+      ru: "Прогрессивный фреймворк для создания пользовательских интерфейсов"
+    },
+    "skill_typescript_desc": {
+      en: "Typed superset of JavaScript for better development",
+      ru: "Типизированное надмножество JavaScript для лучшей разработки"
+    },
+    "skill_javascript_desc": {
+      en: "Core programming language for web development",
+      ru: "Основной язык программирования для веб-разработки"
+    },
+    "skill_html_css_desc": {
+      en: "Fundamental web technologies for structure and styling",
+      ru: "Фундаментальные веб-технологии для структуры и стилизации"
+    },
+    "skill_threejs_desc": {
+      en: "3D graphics library for web applications",
+      ru: "Библиотека 3D графики для веб-приложений"
+    },
+    "skill_drei_desc": {
+      en: "Useful helpers for React Three Fiber",
+      ru: "Полезные помощники для React Three Fiber"
+    },
+    "skill_vite_desc": {
+      en: "Fast build tool and development server",
+      ru: "Быстрый инструмент сборки и сервер разработки"
+    },
+    "skill_go_desc": {
+      en: "Efficient programming language for backend services",
+      ru: "Эффективный язык программирования для бэкенд-сервисов"
+    },
+    "skill_fastapi_desc": {
+      en: "Modern Python web framework for APIs",
+      ru: "Современный Python веб-фреймворк для API"
+    },
+    "skill_python_desc": {
+      en: "Versatile programming language for various applications",
+      ru: "Универсальный язык программирования для различных приложений"
+    },
+    "skill_mysql_desc": {
+      en: "Relational database management system",
+      ru: "Система управления реляционными базами данных"
+    },
+    "skill_postgresql_desc": {
+      en: "Advanced open-source relational database",
+      ru: "Продвинутая открытая реляционная база данных"
+    },
+    "skill_blender_desc": {
+      en: "3D modeling and animation software",
+      ru: "Программное обеспечение для 3D моделирования и анимации"
+    },
+    "skill_csharp_desc": {
+      en: "Object-oriented programming language",
+      ru: "Объектно-ориентированный язык программирования"
+    },
+    "skill_unity_desc": {
+      en: "Game development platform and engine",
+      ru: "Платформа и движок для разработки игр"
+    },
+    "skill_cpp_desc": {
+      en: "High-performance programming language",
+      ru: "Высокопроизводительный язык программирования"
+    },
+    "skill_git_desc": {
+      en: "Version control system for tracking changes",
+      ru: "Система контроля версий для отслеживания изменений"
     }
   };

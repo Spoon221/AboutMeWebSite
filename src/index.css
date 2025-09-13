@@ -2,76 +2,243 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes zoom {
-    0% {
-        background-size: 150%;
-        /* Начальный масштаб фона */
-    }
+/* Импорт шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-    100% {
-        background-size: 200%;
-        /* Конечный масштаб фона */
-    }
+/* Базовые переменные */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --space-gradient: linear-gradient(135deg, #8a2387 0%, #e94057 50%, #f27121 100%);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 20px 40px rgba(0, 0, 0, 0.15);
+  --shadow-strong: 0 25px 50px rgba(0, 0, 0, 0.25);
 }
 
-@keyframes moveBackground {
-    0% {
-        background-position: 0% 50%;
-    }
+/* Глобальные стили */
+* {
+  box-sizing: border-box;
+}
 
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Красивые анимации */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+    100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
     50% {
         background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
     }
 
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
     100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Анимированный фон для header */
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
         background-position: 0% 50%;
     }
 }
 
+@keyframes zoom {
+  0% {
+    background-size: 150%;
+  }
+  100% {
+    background-size: 200%;
+  }
+}
+
+/* Стили для header */
 header {
-    background-image: url('https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&q=80');
+  background-image: 
+    linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 100%),
+    url('https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?auto=format&fit=crop&q=80');
     background-size: cover;
     background-position: center;
+  background-attachment: fixed;
     animation: moveBackground 35s linear infinite, zoom 75s linear infinite;
-    /* Анимация перемещения и приближения */
+  position: relative;
+  overflow: hidden;
 }
 
-
-/* Медиа-запрос для мобильных устройств */
-@media (max-width: 640px) {
-    header {
-        animation: moveBackground 200s linear infinite;
-    }
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+  pointer-events: none;
 }
 
-.iss-orbit-effect {
-    animation: issFlyby 90s infinite alternate ease-in-out;
-    transform-origin: center;
-    height: 160% !important;
-    width: 160% !important;
-    object-position: center;
-    object-fit: cover;
-}
-
+/* Красивые градиентные тексты */
 .space-gradient-text {
-    background: linear-gradient(to right, #8a2387, #e94057, #f27121);
+  background: var(--space-gradient);
+  background-size: 200% 200%;
     -webkit-background-clip: text;
-    color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
     display: inline-block;
-    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  animation: gradientShift 3s ease infinite;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .space-subtitle {
-    background: linear-gradient(to right, #43c6ac, #f8ffae);
+  background: linear-gradient(135deg, #43c6ac 0%, #f8ffae 100%);
+  background-size: 200% 200%;
     -webkit-background-clip: text;
-    color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
     display: inline-block;
+  animation: gradientShift 4s ease infinite;
+  font-weight: 600;
 }
 
+/* Стили для кнопки переключения языка */
+.language-switcher {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  min-width: 60px;
+}
+
+.language-switcher:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Стили для навигационных ссылок */
 .nav-link {
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 25px;
+  padding: 8px 20px;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.nav-link:hover::before {
+  left: 100%;
 }
 
 .nav-link::after {
@@ -81,7 +248,7 @@ header {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(to right, #43c6ac, #f8ffae);
+  background: linear-gradient(90deg, #43c6ac, #f8ffae);
     transition: width 0.3s ease;
 }
 
@@ -89,37 +256,1615 @@ header {
     width: 100%;
 }
 
+/* Стили для социальных иконок */
 .social-icon {
-    transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+  padding: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
 }
 
 .social-icon:hover {
-    transform: translateY(-3px);
+  transform: translateY(-5px) scale(1.1);
     filter: brightness(1.2);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-medium);
 }
 
+/* Стили для секций */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+}
+
+/* Стили для заголовков секций */
+section h2 {
+  position: relative;
+  display: inline-block;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+section h2:hover::after {
+  width: 100%;
+}
+
+/* Стили для карточек навыков */
+.skill-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transition: left 0.6s ease;
+}
+
+.skill-card:hover::before {
+  left: 100%;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-strong);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+
+
+
+/* Стили для категорий навыков */
+.skill-category {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-soft);
+}
+
+.skill-category:nth-child(1) {
+  animation-delay: 0.2s;
+  border-left: 4px solid #3b82f6;
+}
+
+.skill-category:nth-child(2) {
+  animation-delay: 0.4s;
+  border-left: 4px solid #10b981;
+}
+
+.skill-category:nth-child(3) {
+  animation-delay: 0.6s;
+  border-left: 4px solid #f59e0b;
+}
+
+/* Стили для заголовков категорий */
+.skill-category h3 {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Стили для кнопок сворачивания */
+.skill-category button {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.skill-category button:hover {
+  background: rgba(59, 130, 246, 0.2);
+  transform: scale(1.1);
+  border-color: #3b82f6;
+}
+
+/* Стили для секции опыта */
+.experience-timeline {
+  position: relative;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #3b82f6, #10b981, #f59e0b, #8b5cf6);
+  border-radius: 1px;
+}
+
+.experience-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 2rem;
+  transition: all 0.3s ease;
+}
+
+.experience-item::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover::before {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.2);
+}
+
+.experience-item:hover {
+  transform: translateX(10px);
+}
+
+/* Стили для секции образования */
+.education-section {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.education-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Стили для футера */
+footer {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+}
+
+/* Стили для социальных ссылок в футере */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
+  border: 2px solid #e2e8f0;
+  color: #64748b;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #cbd5e1;
+}
+
+.github-link:hover {
+  background: linear-gradient(135deg, #24292e, #2f363d);
+  color: #ffffff;
+  border-color: #24292e;
+}
+
+.linkedin-link:hover {
+  background: linear-gradient(135deg, #0077b5, #005885);
+  color: #ffffff;
+  border-color: #0077b5;
+}
+
+.email-link:hover {
+  background: linear-gradient(135deg, #ea4335, #d33426);
+  color: #ffffff;
+  border-color: #ea4335;
+}
+
+/* Стили для навигационных ссылок */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  color: #475569;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav-link:hover {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #ffffff;
+  border-color: #3b82f6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Стили для кнопки резюме */
+.resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: 2px solid #10b981;
+  border-radius: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.resume-link:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  border-color: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.resume-icon {
+  font-size: 16px;
+}
+
+.resume-text {
+  white-space: nowrap;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 640px) {
+  .social-link {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .nav-link,
+  .resume-link {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  
+  .resume-text {
+    font-size: 12px;
+  }
+}
+
+/* Стили для карусели изображений */
+.image-carousel {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-strong);
+  position: relative;
+}
+
+.carousel-image {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-image:hover {
+  transform: scale(1.05);
+}
+
+/* Стили для навигационных точек */
+.carousel-dot {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.carousel-dot.active {
+  background: white;
+  border-color: #3b82f6;
+  transform: scale(1.2);
+}
+
+/* Стили для стрелок навигации */
+.carousel-arrow {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.carousel-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
 .language-switcher {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
+    top: 15px;
+    left: 15px;
+    padding: 6px 12px;
+    font-size: 12px;
+    min-width: 50px;
+  }
+  
+  .skill-category {
+    padding: 16px;
+    margin-bottom: 1rem;
+  }
+  
+  .experience-item {
+    padding-left: 1.5rem;
+  }
+  
+  .experience-item::before {
+    left: -7px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .skill-category {
+    padding: 12px;
+  }
+  
+  .skill-card {
+    padding: 12px;
+  }
+  
+  .carousel-arrow {
     width: 40px;
     height: 40px;
+  }
+}
+
+/* Дополнительные эффекты */
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-medium);
+}
+
+/* Анимация появления элементов при скролле */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Красивые градиентные границы */
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  padding: 2px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--primary-gradient);
+  border-radius: 16px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+/* Эффект свечения */
+.glow-effect {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+/* Стили для кнопки скачивания резюме */
+.resume-download-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-download-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.resume-download-btn:hover::before {
+  left: 100%;
+}
+
+/* Стили для интерактивных карточек */
+.interactive-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.interactive-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  border-radius: 20px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.interactive-card:hover::before {
+  opacity: 1;
+}
+
+.interactive-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.card-content {
+  background: white;
+  border-radius: 18px;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.card-description {
+  color: #6b7280;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Стили для прогресс-баров навыков */
+.skill-bars {
+  space-y: 1rem;
+}
+
+.skill-bar {
+  margin-bottom: 1rem;
+}
+
+.skill-name {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.skill-progress {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 4px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0;
+}
+
+.interactive-card:hover .skill-fill {
+  width: var(--skill-width);
+}
+
+/* Стили для технологических тегов */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.tech-tag {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  color: #374151;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid #d1d5db;
+}
+
+.tech-tag:hover {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Стили для списка достижений */
+.achievement-list {
+  space-y: 0.75rem;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.achievement-item:hover {
+  background: rgba(59, 130, 246, 0.1);
+  transform: translateX(5px);
+}
+
+.achievement-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.achievement-text {
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.4;
+}
+
+/* Анимация появления карточек */
+.interactive-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+.interactive-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.interactive-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.interactive-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .interactive-card {
+    margin-bottom: 1rem;
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+  }
+  
+  .tech-tags {
+    justify-content: center;
+  }
+}
+
+
+
+
+
+/* Стили для интерактивной временной шкалы */
+.timeline-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.timeline-section.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-title {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.timeline-section.animate .timeline-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: timelineLineAppear 1.5s ease-out 0.8s forwards;
+}
+
+/* Мобильная адаптация для временной шкалы */
+@media (max-width: 768px) {
+  .timeline-container::before {
+    left: 20px;
+  }
+  
+  .timeline-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    margin-left: 20px;
+  }
+  
+  .timeline-item:nth-child(odd) {
+    flex-direction: column !important;
+  }
+  
+  .timeline-marker {
+    left: -20px !important;
+    transform: none !important;
+  }
+  
+  .timeline-content {
+    width: 100% !important;
+    margin: 0 !important;
+    margin-top: 1rem !important;
+  }
+  
+  .timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 0 !important;
+  }
+  
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 0 !important;
+  }
+}
+
+@keyframes timelineLineAppear {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 1;
+    height: 100%;
+  }
+}
+
+.timeline-item {
+  position: relative;
+  margin: 3rem 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease-out;
+}
+
+.timeline-section.animate .timeline-item {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline-section.animate .timeline-item:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.timeline-section.animate .timeline-item:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+.timeline-section.animate .timeline-item:nth-child(3) {
+  transition-delay: 0.6s;
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  border: 4px solid white;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+  z-index: 2;
+  opacity: 0;
+  scale: 0;
+  transition: all 0.6s ease-out;
+}
+
+.timeline-section.animate .timeline-marker {
+  opacity: 1;
+  scale: 1;
+}
+
+.timeline-section.animate .timeline-item:nth-child(1) .timeline-marker {
+  transition-delay: 0.4s;
+}
+
+.timeline-section.animate .timeline-item:nth-child(2) .timeline-marker {
+  transition-delay: 0.6s;
+}
+
+.timeline-section.animate .timeline-item:nth-child(3) .timeline-marker {
+  transition-delay: 0.8s;
+}
+
+.timeline-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  width: 45%;
+  position: relative;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.timeline-section.animate .timeline-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-section.animate .timeline-item:nth-child(1) .timeline-content {
+  transition-delay: 0.6s;
+}
+
+.timeline-section.animate .timeline-item:nth-child(2) .timeline-content {
+  transition-delay: 0.8s;
+}
+
+.timeline-section.animate .timeline-item:nth-child(3) .timeline-content {
+  transition-delay: 1s;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-right: 55%;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: 55%;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-description {
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.timeline-skills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.timeline-skill {
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+  color: #374151;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  border: 1px solid #d1d5db;
+}
+
+/* Мобильная адаптация для навыков */
+@media (max-width: 768px) {
+  .timeline-skills {
+    gap: 0.25rem;
+  }
+  
+  .timeline-skill {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Адаптивные стили для временной шкалы */
+@media (max-width: 768px) {
+  .timeline-container::before {
+    left: 20px;
+  }
+  
+  .timeline-item {
+    flex-direction: row !important;
+    margin-left: 40px;
+  }
+  
+  .timeline-marker {
+    left: 20px;
+  }
+  
+  .timeline-content {
+    width: calc(100% - 60px);
+    margin: 0 !important;
+  }
+  
+  .skill-branches {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Стили для модального окна навыков */
+.skill-details-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.skill-details-content {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+    border-radius: 50%;
+  cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.close-modal-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+}
+
+.skill-details-info {
+  color: #374151;
+  line-height: 1.6;
+}
+
+.skill-projects {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.skill-projects h5 {
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.skill-projects ul {
+  color: #6b7280;
+}
+
+.skill-projects li {
+  margin-bottom: 0.5rem;
+}
+
+/* Интерактивные стили для навыков */
+.skills-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-category {
+  position: relative;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.skill-category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.1);
+}
+
+.skill-category-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+.skill-category:hover .skill-category-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+  animation: bounce 1s infinite;
+}
+
+/* Анимация для иконок навыков */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Улучшенные эффекты для карточек навыков */
+.skill-card {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover::before {
+  transform: scaleX(1);
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.skill-card:hover .skill-name {
+  color: #3b82f6;
+}
+
+/* Анимация для иконок в карточках */
+.skill-card .animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+.skill-card:hover .animate-bounce {
+  animation: bounce 0.5s infinite;
+}
+
+/* Улучшенные прогресс-бары */
+.skill-progress {
+  width: 100%;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.skill-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 5px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+  animation: shimmer 2s infinite;
+}
+
+/* Улучшенные теги */
+.skill-tag {
+  padding: 0.25rem 0.75rem;
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(59, 130, 246, 0.2);
     transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.skill-tag:hover::before {
+  left: 100%;
+}
+
+.skill-tag:hover {
+  background: rgba(59, 130, 246, 0.2);
+    transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.skill-category-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+
+.skill-category-divider {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.3) 0%, transparent 100%);
+  margin-left: 1rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.skill-card {
+  position: relative;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover::before {
+  transform: scaleX(1);
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.skill-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.skill-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.skill-card:hover .skill-name {
+  color: #3b82f6;
+}
+
+.skill-level {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.skill-level-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.skill-level-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.skill-level-badge.expert {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.skill-level-badge.advanced {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+}
+
+.skill-level-badge.intermediate {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+}
+
+.skill-level-badge.beginner {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  color: white;
+}
+
+.skill-progress {
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.skill-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.skill-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skill-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  padding: 0.25rem 0.75rem;
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: all 0.3s ease;
   }
   
-  .language-switcher:hover {
-    background: rgba(255, 255, 255, 0.2);
+.skill-tag:hover {
+  background: rgba(59, 130, 246, 0.2);
     transform: scale(1.05);
   }
+
+/* Анимации появления */
+.skill-category {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.skill-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .skill-category-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .skill-category-divider {
+    flex: 1;
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .skill-category {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .skill-category-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .skill-category-divider {
+    display: none;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .skill-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Эффект волны при наведении */
+.wave-effect {
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.2) 40%, transparent 70%);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  left: 0;
+  top: 0;
+}
+
+.skill-card:hover .wave-effect {
+  width: 250px !important;
+  height: 250px !important;
+}
+
+
+/* Анимированный текст "пересобирай" */
+.rebuild-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.rebuild-text-content {
+  display: flex;
+  gap: 2px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: transparent;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #10b981);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradientShift 2s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.rebuild-letter {
+  display: inline-block;
+  animation: letterRebuild 0.6s ease-out forwards;
+  animation-delay: calc(var(--letter-index) * 0.1s);
+  transform: translateY(50px) rotate(180deg);
+  opacity: 0;
+}
+
+.rebuild-letter:nth-child(1) { --letter-index: 0; }
+.rebuild-letter:nth-child(2) { --letter-index: 1; }
+.rebuild-letter:nth-child(3) { --letter-index: 2; }
+.rebuild-letter:nth-child(4) { --letter-index: 3; }
+.rebuild-letter:nth-child(5) { --letter-index: 4; }
+.rebuild-letter:nth-child(6) { --letter-index: 5; }
+.rebuild-letter:nth-child(7) { --letter-index: 6; }
+.rebuild-letter:nth-child(8) { --letter-index: 7; }
+.rebuild-letter:nth-child(9) { --letter-index: 8; }
+.rebuild-letter:nth-child(10) { --letter-index: 9; }
+.rebuild-letter:nth-child(11) { --letter-index: 10; }
+
+@keyframes letterRebuild {
+  0% {
+    transform: translateY(50px) rotate(180deg) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px) rotate(0deg) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Состояние наведения на навык */
+.skill-card.skill-hovered {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 25px 50px rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+/* Улучшенные эффекты наведения */
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+  cursor: pointer;
+}
+
+/* Магнитный эффект для курсора */
+.skill-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Анимация появления тегов при наведении */
+.skill-card:hover .skill-tag {
+  animation: tagSlideIn 0.3s ease-out forwards;
+  animation-delay: calc(var(--tag-index) * 0.1s);
+}
+
+.skill-tag {
+  --tag-index: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover .skill-tag {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes tagSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Улучшенные теги с интерактивностью */
+.skill-tag:hover {
+  background: rgba(59, 130, 246, 0.2);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+
