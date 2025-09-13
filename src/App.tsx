@@ -77,34 +77,36 @@ function App() {
      frontend: {
        title: t('frontend'),
        skills: [
-         { name: 'React', description: t('skill_react_desc'), tags: ['Hooks', 'Context', 'Router'] },
-         { name: 'Vue', description: t('skill_vue_desc'), tags: ['Composition API', 'Vuex', 'Nuxt'] },
-         { name: 'TypeScript', description: t('skill_typescript_desc'), tags: ['Types', 'Interfaces', 'Generics'] },
-         { name: 'JavaScript', description: t('skill_javascript_desc'), tags: ['ES6+', 'Async/Await', 'Modules'] },
-         { name: 'HTML/CSS', description: t('skill_html_css_desc'), tags: ['Semantic HTML', 'Flexbox', 'Grid'] },
-         { name: 'Three JS', description: t('skill_threejs_desc'), tags: ['WebGL', 'Scenes', 'Animations'] },
-         { name: 'Drei', description: t('skill_drei_desc'), tags: ['Helpers', 'Hooks', 'Components'] },
-         { name: 'Vite', description: t('skill_vite_desc'), tags: ['HMR', 'ES Modules', 'Plugins'] }
+         { name: 'React', description: t('skill_react_real_desc'), tags: ['Hooks', 'Context', 'Router'] },
+         { name: 'Next.js', description: t('skill_nextjs_real_desc'), tags: ['SSR', 'API Routes', 'SSG'] },
+         { name: 'Vue', description: t('skill_vue_real_desc'), tags: ['Composition API', 'Vuex', 'Nuxt'] },
+         { name: 'TypeScript', description: t('skill_typescript_real_desc'), tags: ['Types', 'Interfaces', 'Generics'] },
+         { name: 'JavaScript', description: t('skill_javascript_real_desc'), tags: ['ES6+', 'Async/Await', 'Modules'] },
+         { name: 'HTML/CSS', description: t('skill_html_css_real_desc'), tags: ['Semantic HTML', 'Flexbox', 'Grid'] },
+         { name: 'Three JS', description: t('skill_threejs_real_desc'), tags: ['WebGL', 'Scenes', 'Animations'] },
+         { name: 'Drei', description: t('skill_drei_real_desc'), tags: ['Helpers', 'Hooks', 'Components'] },
+         { name: 'Vite', description: t('skill_vite_real_desc'), tags: ['HMR', 'ES Modules', 'Plugins'] }
        ]
      },
      backend: {
        title: t('backend'),
        skills: [
-         { name: 'Go', description: t('skill_go_desc'), tags: ['Goroutines', 'Channels', 'Gin'] },
-         { name: 'FastAPI', description: t('skill_fastapi_desc'), tags: ['Async', 'Pydantic', 'OpenAPI'] },
-         { name: 'Python', description: t('skill_python_desc'), tags: ['Django', 'Flask', 'Data Science'] },
-         { name: 'MySQL', description: t('skill_mysql_desc'), tags: ['Queries', 'Indexes', 'Optimization'] },
-         { name: 'PostgreSQL', description: t('skill_postgresql_desc'), tags: ['JSON', 'Full-text Search', 'Extensions'] }
+         { name: 'Go', description: t('skill_go_real_desc'), tags: ['Goroutines', 'Channels', 'Gin'] },
+         { name: 'FastAPI', description: t('skill_fastapi_real_desc'), tags: ['Async', 'Pydantic', 'OpenAPI'] },
+         { name: 'Python', description: t('skill_python_real_desc'), tags: ['Django', 'Flask', 'Data Science'] },
+         { name: 'Django', description: t('skill_django_real_desc'), tags: ['Web Framework', 'ORM', 'Admin Panel'] },
+         { name: 'MySQL', description: t('skill_mysql_real_desc'), tags: ['Queries', 'Indexes', 'Optimization'] },
+         { name: 'PostgreSQL', description: t('skill_postgresql_real_desc'), tags: ['JSON', 'Full-text Search', 'Extensions'] }
        ]
      },
      other: {
        title: t('other'),
        skills: [
-         { name: 'Blender', description: t('skill_blender_desc'), tags: ['Modeling', 'Rendering', 'Animation'] },
-         { name: 'C#', description: t('skill_csharp_desc'), tags: ['.NET', 'Unity', 'LINQ'] },
-         { name: 'Unity', description: t('skill_unity_desc'), tags: ['C#', 'Physics', 'Networking'] },
-         { name: 'C++', description: t('skill_cpp_desc'), tags: ['Memory Management', 'STL', 'Performance'] },
-         { name: 'Git', description: t('skill_git_desc'), tags: ['Branches', 'Merge', 'GitHub'] }
+         { name: 'Blender', description: t('skill_blender_real_desc'), tags: ['Modeling', 'Rendering', 'Animation'] },
+         { name: 'C#', description: t('skill_csharp_real_desc'), tags: ['.NET', 'Unity', 'LINQ'] },
+         { name: 'Unity', description: t('skill_unity_real_desc'), tags: ['C#', 'Physics', 'Networking'] },
+         { name: 'C++', description: t('skill_cpp_real_desc'), tags: ['Memory Management', 'STL', 'Performance'] },
+         { name: 'Git', description: t('skill_git_real_desc'), tags: ['Branches', 'Merge', 'GitHub'] }
        ]
      }
   };
@@ -461,21 +463,17 @@ function App() {
          style={{ opacity: 0, animation: 'fadeInUp 1s ease-out 0.5s forwards' }}
        >
          
-         {/* Анимированный текст "пересобирай" */}
+         {/* Анимированный текст "rebuild" */}
          {hoveredSkill && (
            <div className="rebuild-text">
              <div className="rebuild-text-content">
-               <span className="rebuild-letter">п</span>
-               <span className="rebuild-letter">е</span>
-               <span className="rebuild-letter">р</span>
-               <span className="rebuild-letter">е</span>
-               <span className="rebuild-letter">с</span>
-               <span className="rebuild-letter">о</span>
-               <span className="rebuild-letter">б</span>
-               <span className="rebuild-letter">и</span>
-               <span className="rebuild-letter">р</span>
-               <span className="rebuild-letter">а</span>
-               <span className="rebuild-letter">й</span>
+               <span className="rebuild-letter">r</span>
+               <span className="rebuild-letter">e</span>
+               <span className="rebuild-letter">b</span>
+               <span className="rebuild-letter">u</span>
+               <span className="rebuild-letter">i</span>
+               <span className="rebuild-letter">l</span>
+               <span className="rebuild-letter">d</span>
              </div>
            </div>
          )}

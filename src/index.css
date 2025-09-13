@@ -1791,10 +1791,6 @@ footer::before {
 .rebuild-letter:nth-child(5) { --letter-index: 4; }
 .rebuild-letter:nth-child(6) { --letter-index: 5; }
 .rebuild-letter:nth-child(7) { --letter-index: 6; }
-.rebuild-letter:nth-child(8) { --letter-index: 7; }
-.rebuild-letter:nth-child(9) { --letter-index: 8; }
-.rebuild-letter:nth-child(10) { --letter-index: 9; }
-.rebuild-letter:nth-child(11) { --letter-index: 10; }
 
 @keyframes letterRebuild {
   0% {

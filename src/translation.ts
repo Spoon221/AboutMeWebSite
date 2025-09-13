@@ -428,5 +428,87 @@ interface Translation {
     "skill_git_desc": {
       en: "Version control system for tracking changes",
       ru: "Система контроля версий для отслеживания изменений"
+    },
+    
+    // Реальные описания навыков на основе опыта работы
+    "skill_react_real_desc": {
+      en: "Built websites and portfolios using React",
+      ru: "Создавал веб-сайты и портфолио на React"
+    },
+    "skill_nextjs_real_desc": {
+      en: "Developed electronic booking systems for Hyatt hotel networks",
+      ru: "Разрабатывал системы электронного бронирования для сетей отелей Hyatt"
+    },
+    "skill_vue_real_desc": {
+      en: "Created marketplace projects using Vue",
+      ru: "Разрабатывал проекты по маркетплейсам на Vue"
+    },
+    "skill_typescript_real_desc": {
+      en: "Used for typing React and Next.js projects",
+      ru: "Использовал для типизации React и Next.js проектов"
+    },
+    "skill_javascript_real_desc": {
+      en: "Built interactive web applications with JavaScript",
+      ru: "Писал интерактивные веб-приложения на JavaScript"
+    },
+    "skill_html_css_real_desc": {
+      en: "Created responsive interfaces and animations",
+      ru: "Верстал адаптивные интерфейсы и создавал анимации"
+    },
+    "skill_threejs_real_desc": {
+      en: "Built 3D portfolios and interactive web applications",
+      ru: "Создавал 3D портфолио и интерактивные веб-приложения"
+    },
+    "skill_drei_real_desc": {
+      en: "Used to simplify Three.js development",
+      ru: "Использовал для упрощения работы с Three.js"
+    },
+    "skill_vite_real_desc": {
+      en: "Configured fast development with Vite",
+      ru: "Настраивал быструю разработку с Vite"
+    },
+    "skill_go_real_desc": {
+      en: "Wrote automated tests and admin menus in Go",
+      ru: "Писал автотесты и админ-меню на Go"
+    },
+    "skill_fastapi_real_desc": {
+      en: "Developed fast APIs for web applications",
+      ru: "Разрабатывал быстрые API для веб-приложений"
+    },
+    "skill_python_real_desc": {
+      en: "Created AI bots and websites using Python",
+      ru: "Создавал AI боты и веб-сайты на Python"
+    },
+    "skill_django_real_desc": {
+      en: "Built web applications with admin panels",
+      ru: "Разрабатывал веб-приложения с админ-панелью"
+    },
+    "skill_mysql_real_desc": {
+      en: "Worked with databases in various projects",
+      ru: "Работал с базами данных в проектах"
+    },
+    "skill_postgresql_real_desc": {
+      en: "Used in electronic booking systems",
+      ru: "Использовал в системах электронного бронирования"
+    },
+    "skill_blender_real_desc": {
+      en: "Created 3D models for games and web applications",
+      ru: "Создавал 3D модели для игр и веб-приложений"
+    },
+    "skill_csharp_real_desc": {
+      en: "Developed Unity games with networking capabilities",
+      ru: "Разрабатывал игры на Unity с сетевым взаимодействием"
+    },
+    "skill_unity_real_desc": {
+      en: "Built games with client-server interaction",
+      ru: "Создавал игры с клиент-серверным взаимодействием"
+    },
+    "skill_cpp_real_desc": {
+      en: "Used for high-performance applications",
+      ru: "Использовал для высокопроизводительных приложений"
+    },
+    "skill_git_real_desc": {
+      en: "Versioned code and worked in teams",
+      ru: "Версионировал код и работал в команде"
     }
   };
